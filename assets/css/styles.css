@@ -168,6 +168,43 @@ h2::after{content:"";display:block;width:48px;height:4px;border-radius:3px;backg
 /* subtle lift on hover */
 .card.service:hover,.card.review:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
 
+/* ---- AREAS Map + ZIP checker ---- */
+.areas-map-wrap{display:grid;gap:16px}
+.areas-map{height:480px;border-radius:14px;background:#eef3f7;border:1px solid #e1e7ee;overflow:hidden;box-shadow:var(--shadow)}
+.map-placeholder{height:100%;display:flex;align-items:center;justify-content:center;color:#5c6b78;font-weight:600}
+.section-map{padding:32px 0;isolation:isolate}
+.map-card{
+  position:relative;
+  height:clamp(320px, 55vh, 560px);
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 12px 30px rgba(15,34,48,.08);
+  background:#f6f7f9;
+  z-index:0; /* map stays in its own stacking context */
+}
+/* Leaflet must fill the card, not the page */
+#serviceMap,
+.map-card .leaflet-container{width:100%;height:100%;border-radius:inherit}
+/* keep controls inside, but not above other sections */
+.map-card .leaflet-control-container{z-index:2}
+/* prevent any panes from escaping stacking context */
+.map-card .leaflet-pane{z-index:1}
+.zip-checker{display:grid;gap:8px}
+.zip-checker label{font-weight:700;color:var(--navy)}
+.zip-row{display:flex;gap:10px;align-items:center}
+.zip-row input{flex:1;min-width:0}
+.zip-msg{font-size:14px;margin-top:2px}
+.zip-msg.ok{color:#1a7f37}
+.zip-msg.maybe{color:#8a5b00}
+.zip-msg.error{color:#b42318}
+
+@media (max-width:900px){
+  .areas-map{height:380px}
+}
+@media (max-width:640px){
+  .areas-map{height:320px}
+}
+
 
 /* Lists */
 ul.clean{list-style:none;margin:0;padding:0}
