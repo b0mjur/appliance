@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DT Appliance Repair & Solutions LLC | Phoenix, AZ</title>
+  <meta name="description" content="Family-owned appliance repair in Phoenix & Maricopa County. Same/next-day service for refrigerators, washers, dryers, ovens, dishwashers & more. Licensed & insured." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/swiper@10/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="assets/img/site/logo.png" type="image/png">
+  <!-- Preload hero background image for faster LCP -->
+  <link rel="preload" as="image" href="assets/img/site/hero-bg.jpg" fetchpriority="high">
+</head>
+<body>
+  <header>
+    <div class="container topbar">
+      <div class="brand">
+  <img src="assets/img/site/logo-transparent.png" onerror="this.onerror=null;this.src='assets/img/site/logo.png'" alt="DT Appliance Repair & Solutions LLC logo"/>
+        <div class="title">
+          <b>DT Appliance</b>
+          <span>Repair & Solutions LLC · Phoenix, AZ</span>
+        </div>
+      </div>
+      <div class="cta-buttons">
+        <!-- <a class="btn btn-outline" href="tel:+1(602)-736-5620">Call Now</a> -->
+        <a class="btn btn-primary" href="tel:+1(602)-736-5620">Book Service</a>
+      </div>
+    </div>
+    <nav>
+      <div class="container navwrap">
+        <div class="navlinks">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#reviews">Reviews</a>
+          <a href="#areas">Service Area</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="pill">Licensed & Insured • Same/Next-Day • Family-Owned</div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <!-- Optional background video: src set dynamically in JS based on conditions -->
+  <video class="hero-video" preload="none" playsinline muted loop poster="assets/img/site/hero-bg.jpg" aria-hidden="true"></video>
+    <div class="container hero-inner">
+      <div>
+        <div class="pill">Trusted local appliance experts</div>
+        <h1 class="reveal">Fast, honest appliance repair in Phoenix</h1>
+        <p class="reveal" style="--delay: 100ms">7+ years of experience. We treat your home like our own—clear communication, fair pricing, and repairs done right the first time.</p>
+        <div class="badges reveal" style="--delay: 200ms">
+          <!-- <a class="btn btn-primary" href="#contact">Get a Free Estimate</a> -->
+          <a class="btn btn-primary" href="tel:+1(602)-736-5620">Call: +1 (602) 736-5620</a>
+        </div>
+        <p class="notice">No hidden fees. We’ll diagnose and provide an upfront quote before any work.</p>
+      </div>
+      <div class="card" style="padding:20px">
+        <h3 style="margin-top:0;color:var(--navy)">Book a technician</h3>
+        <!-- Formspree wired -->
+        <form action="https://formspree.io/f/mjkavlky" method="POST" id="bookForm">
+          <div class="cols" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <input name="name" placeholder="Full name" required>
+            <input name="phone" placeholder="Phone" required>
+          </div>
+          <input name="email" type="email" placeholder="Email (optional)">
+          <select name="appliance" required>
+            <option value="" disabled selected>Appliance type</option>
+            <option>Refrigerator</option>
+            <option>Washer</option>
+            <option>Dryer</option>
+            <option>Dishwasher</option>
+            <option>Oven / Range</option>
+            <option>Microwave</option>
+            <option>Other</option>
+          </select>
+          <textarea name="details" placeholder="Brand, model (if known), and what’s wrong"></textarea>
+
+          <!-- hidden subject + honeypot -->
+          <input type="hidden" name="_subject" value="New Appointment Request - DT Appliance">
+          <input type="text" name="_gotcha" style="display:none">
+
+          <button class="btn btn-primary" type="submit">Request Appointment</button>
+          <div class="notice" id="bookMsg">Prefer texting? <a href="sms:+16027365620">Text us</a>.</div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <h2>Repairs we do every day</h2>
+      <p class="muted">
+        From quick fixes to complex diagnostics—we service most major brands and household appliances.
+      </p>
+      <div class="grid">
+        <div class="card service"><h3>Refrigerators & Freezers</h3><p>Cooling issues, leaks, ice makers, noisy compressors.</p></div>
+        <div class="card service"><h3>Washers</h3><p>Not spinning, leaking, draining problems, error codes.</p></div>
+        <div class="card service"><h3>Dryers</h3><p>No heat, long dry times, drums not turning, noises.</p></div>
+        <div class="card service"><h3>Ovens / Ranges</h3><p>Not heating, uneven baking, ignition issues, glass tops.</p></div>
+        <div class="card service"><h3>Dishwashers</h3><p>Not cleaning, not draining, leaking, control problems.</p></div>
+        <div class="card service"><h3>Microwaves</h3><p>No heat, turntable issues, sparking, door switches.</p></div>
+      </div>
+      <div style="margin-top:14px">
+        <span class="chip">Same/Next-Day Appointments</span>
+        <span class="chip">45-Day Labor Warranty</span>
+        <span class="chip">OEM & High-Quality Parts</span>
+        <span class="chip">Upfront Pricing</span>
+      </div>
+    </div>
+  </section>
+
+      <!-- Brands slider -->
+      <h4 class="elementor-heading-title elementor-size-default">Brands we are working with</h4>
+      <div class="swiper brands-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/kitchenaid.png" alt="KitchenAid"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/lg.png" alt="LG"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/maytag.png" alt="Maytag"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/electrolux.png" alt="Electrolux"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/samsung.png" alt="Samsung"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/whirpool.png" alt="Whirlpool"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/ge.png" alt="GE"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/viking.png" alt="Viking"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/jennair.png" alt="JennAir"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/kenmore.png" alt="Kenmore"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/subzero.png" alt="SubZero"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/thermador.png" alt="Thermador"></div>
+          <div class="swiper-slide"><img loading="lazy" decoding="async" class="brand-logo" src="assets/img/brands/wolf.png" alt="Wolf"></div>
+        </div>
+      </div>
+      <!-- End Brands slider -->
+    </div>
+  </section>
+
+  <section id="about" style="background:var(--accent)">
+    <div class="container">
+      <div class="about-content">
+        <h2>Family-owned. Community-trusted.</h2>
+        <p>DT Appliance Repair & Solutions LLC is a Phoenix-based family business committed to responsive, transparent service. We arrive on schedule, diagnose clearly, and only proceed with work after explaining options and costs.</p>
+
+        <!-- Polished feature cards: icon + title + concise benefit copy -->
+        <div class="feature-cards">
+          <div class="feature-card">
+            <div class="icon icon--green">
+              <img class="feature-icon" src="assets/img/site/pricing.png" alt="Transparent pricing icon" loading="lazy" onerror="this.onerror=null;this.src='assets/img/pricing.svg';">
+            </div>
+            <h3>Transparent Pricing</h3>
+            <p>Upfront, competitive pricing with the diagnostic fee applied to any subsequent repair. No hidden charges.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon icon--amber">
+              <img class="feature-icon" src="assets/img/site/technicians.png" alt="Certified technicians icon" loading="lazy" onerror="this.onerror=null;this.src='assets/img/technicians.svg';">
+            </div>
+            <h3>Factory-Trained Technicians</h3>
+            <p>Certified technicians experienced with major brands and equipped to complete repairs on the first visit when possible.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="icon icon--coral">
+              <img class="feature-icon" src="assets/img/site/satisfaction.png" alt="Customer satisfaction icon" loading="lazy" onerror="this.onerror=null;this.src='assets/img/satisfaction.svg';">
+            </div>
+            <h3>Service You Can Count On</h3>
+            <p>We stand behind our work with a labor warranty and clear communication—your satisfaction is our priority.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AREAS WE SERVE -->
+  <section id="areas" class="areas">
+    <div class="container">
+      <h2 class="title">Areas We Serve</h2>
+      <div class="areas-map-wrap">
+        <section class="section-map">
+          <div class="map-card">
+            <div id="serviceMap" aria-label="Service area map"></div>
+          </div>
+        </section>
+        <form id="zipForm" class="zip-checker" novalidate>
+          <label for="zipInput">Enter ZIP to check if we serve your area.</label>
+          <div class="zip-row">
+            <input id="zipInput" name="zip" inputmode="numeric" pattern="\d{5}" maxlength="5" placeholder="e.g., 85004" aria-describedby="zipMsg" />
+            <button class="btn btn-primary" type="submit">Check</button>
+          </div>
+          <div id="zipMsg" class="zip-msg" aria-live="polite"></div>
+        </form>
+      </div>
+      
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container reviews-wrap">
+      <div class="reviews-content">
+        <h2>What customers say</h2>
+        <p class="muted">Real feedback from Phoenix homeowners.</p>
+        <div class="grid">
+          <div class="card review">
+            <div class="stars">★★★★★</div>
+            <p>“Quick diagnosis and fair price. Fridge is cold again the same day. Thank you!”</p>
+            <small>— Maria P., Phoenix</small>
+          </div>
+          <div class="card review">
+            <div class="stars">★★★★★</div>
+            <p>“Professional and honest. Told us what was worth fixing and what wasn’t.”</p>
+            <small>— James R., Glendale</small>
+          </div>
+          <div class="card review">
+            <div class="stars">★★★★★</div>
+            <p>“On time, tidy, and friendly. Washer issue solved in one visit.”</p>
+            <small>— Aisha K., Tempe</small>
+          </div>
+        </div>
+      </div>
+      <aside class="reviews-photos" aria-label="Customer photos">
+        <figure class="photo photo--a">
+          <img loading="lazy" decoding="async" src="assets/img/site/refrigerator.jpg" alt="Refrigerator repair" onerror="this.closest('.photo').style.display='none'">
+        </figure>
+        <figure class="photo photo--b">
+          <img loading="lazy" decoding="async" src="assets/img/site/washer.png" alt="Washer repair" onerror="this.closest('.photo').style.display='none'">
+        </figure>
+      </aside>
+    </div>
+  </section>
+
+  <!-- WORK GALLERY -->
+  <!-- START:GALLERY -->
+  <style>
+    .gallery { padding: 32px 0; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+      gap: 24px;
+      align-items: stretch;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    /* Card wrapper prevents overlap and clips hover scaling nicely */
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      background: #fff;
+      transition: transform .3s ease;
+    }
+    .gallery-card img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 3;      /* unified aspect ratio */
+      object-fit: cover;        /* fill without distortion */
+      transition: transform .3s ease;
+    }
+    .gallery-card:hover img { transform: scale(1.02); }
+    /* Reset any inherited oddities to guarantee no overlap */
+    .gallery img { position: static !important; margin: 0 !important; z-index: auto !important; }
+  </style>
+  <section class="gallery" aria-label="Recent work">
+    <div class="gallery-grid">
+      <figure class="gallery-card">
+        <img src="assets/img/site/refrigerator.jpg" alt="Built-in refrigerator" />
+      </figure>
+      <figure class="gallery-card">
+        <img src="assets/img/site/washer.PNG" alt="Washer and dryer" />
+      </figure>
+    </div>
+  </section>
+  <!-- END:GALLERY -->
+
+  <section id="faq" style="background:var(--accent)">
+    <div class="container">
+      <h2>FAQ</h2>
+      <div class="grid">
+        <div class="card service"><h3>Do you charge a diagnostic fee?</h3><p>We provide an upfront diagnostic and apply it toward the repair when you proceed.</p></div>
+        <div class="card service"><h3>How soon can you come?</h3><p>Same/next-day in most areas. We’ll text you a short arrival window.</p></div>
+        <div class="card service"><h3>What about parts?</h3><p>We carry common parts and can source OEM/higher-quality components quickly when needed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <footer>
+   
+    <div class="container footgrid">
+      <div>
+        <b>DT Appliance Repair & Solutions LLC</b>
+        <p class="muted">Family-owned appliance repair proudly serving Phoenix & Maricopa County.</p>
+        <li><strong>Phone:</strong> <a href="tel:+1(602)-736-5620">+1(602)-736-5620</a></li>
+          <li><strong>Text:</strong> <a href="sms:+1(602)-736-5620">+1(602)-736-5620</a></li>
+          <li><strong>Email:</strong> <a href="mailto:dta.appointment@gmail.com">dta.appointment@gmail.com</a></li>
+          <li><strong>Hours:</strong> Mon–Sun 8:00AM–8:00PM</li>
+      </div>
+      
+      <div>
+        <b>Links</b>
+        <ul class="clean">
+          <li><a href="#services">Services</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <b>Details</b>
+        <ul class="clean">
+          <li>Phoenix, AZ</li>
+          <li>Maricopa County</li>
+          <li>Licensed & Insured</li>
+          <li>EIN on file</li>
+        </ul>
+      </div>
+    </div>
+    <div class="container copyright">© <span id="y"></span> DT Appliance Repair & Solutions LLC. All rights reserved.</div>
+  </footer>
+
+  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <!-- LocalBusiness Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "DT Appliance Repair & Solutions LLC",
+  "image": "assets/img/site/logo.png",
+    "telephone": "+1 (602) 736-5620",
+    "email": "dta.appointment@gmail.com",
+    "address": {"@type":"PostalAddress","addressLocality":"Phoenix","addressRegion":"AZ","addressCountry":"US"},
+    "areaServed": "Maricopa County",
+    "url": "https://your-domain.example/",
+    "description": "Family-owned appliance repair: refrigerators, washers, dryers, ovens, dishwashers & more. Same/next-day service.",
+    "openingHours": "Mo,Tu,We,Th,Fr,Sa,Su 08:00AM-08:00PM",
+    "priceRange": "$$"
+  }
+  </script>
+</body>
+</html>
