@@ -219,61 +219,17 @@
           </div>
         </div>
       </div>
-      <aside class="reviews-photos" aria-label="Customer photos">
+      <!-- Right-side photo illustrating refrigerator repair -->
+      <div class="reviews-photos">
         <figure class="photo photo--a">
-          <img loading="lazy" decoding="async" src="assets/img/site/refrigerator.jpg" alt="Refrigerator repair" onerror="this.closest('.photo').style.display='none'">
+          <img src="assets/img/site/refrigerator.jpg" loading="lazy" decoding="async" alt="Refrigerator repair in Phoenix — DT Appliance">
         </figure>
-        <figure class="photo photo--b">
-          <img loading="lazy" decoding="async" src="assets/img/site/washer.png" alt="Washer repair" onerror="this.closest('.photo').style.display='none'">
+        <figure class="photo photo--b" aria-hidden="true">
+          <img src="assets/img/site/washer.jpg" loading="lazy" decoding="async" alt="Washer repair illustration">
         </figure>
-      </aside>
+      </div>
     </div>
   </section>
-
-  <!-- WORK GALLERY -->
-  <!-- START:GALLERY -->
-  <style>
-    .gallery { padding: 32px 0; }
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
-      gap: 24px;
-      align-items: stretch;
-      max-width: 980px;
-      margin: 0 auto;
-    }
-    /* Card wrapper prevents overlap and clips hover scaling nicely */
-    .gallery-card {
-      position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.08);
-      background: #fff;
-      transition: transform .3s ease;
-    }
-    .gallery-card img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      aspect-ratio: 4 / 3;      /* unified aspect ratio */
-      object-fit: cover;        /* fill without distortion */
-      transition: transform .3s ease;
-    }
-    .gallery-card:hover img { transform: scale(1.02); }
-    /* Reset any inherited oddities to guarantee no overlap */
-    .gallery img { position: static !important; margin: 0 !important; z-index: auto !important; }
-  </style>
-  <section class="gallery" aria-label="Recent work">
-    <div class="gallery-grid">
-      <figure class="gallery-card">
-        <img src="assets/img/site/refrigerator.jpg" alt="Built-in refrigerator" />
-      </figure>
-      <figure class="gallery-card">
-        <img src="assets/img/site/washer.PNG" alt="Washer and dryer" />
-      </figure>
-    </div>
-  </section>
-  <!-- END:GALLERY -->
 
   <section id="faq" style="background:var(--accent)">
     <div class="container">
