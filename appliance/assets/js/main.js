@@ -3,6 +3,8 @@
 // assets/js/main.js
 
 (function () {
+  const THANK_YOU_URL = 'https://dtappliances.com/thank-you';
+
   /* ---------- Footer year ---------- */
   function setYear() {
     const y = document.getElementById('y');
@@ -228,33 +230,130 @@
         });
 
         if (res.ok) {
-          msg.textContent = '✅ Thanks! We received your request and will contact you shortly.';
+          msg.textContent = 'Thanks! We received your request and will contact you shortly.';
           form.reset();
+          window.location.assign(THANK_YOU_URL);
         } else {
           // Try to read error message if available
-          let fallback = '⚠️ Sorry, something went wrong. Please call or text us.';
+          let fallback = 'Sorry, something went wrong. Please call or text us.';
           try {
             const json = await res.json();
             if (json && json.errors && json.errors.length) {
-              fallback = '⚠️ ' + json.errors.map(e => e.message).join(', ');
+              fallback = json.errors.map(e => e.message).join(', ');
             }
           } catch (_) {}
           msg.textContent = fallback;
         }
       } catch (_) {
-        msg.textContent = '⚠️ Network error. Please try again or call/text us.';
+        msg.textContent = 'Network error. Please try again or call/text us.';
       }
     });
   }
 
-  /* ---------- Init on DOM ready ---------- */
+  /* ---------- Smart header offset adjustment ---------- */
+  function adjustForHeader() {
+    const header = document.querySelector('header');
+    const hero = document.querySelector('.hero');
+    
+    if (!header || !hero) return;
+
+    let isAnimating = false;
+
+    function updateOffset() {
+      // Don't update margin during header animation to prevent shaking
+      if (isAnimating) return;
+      
+      const headerHeight = header.offsetHeight;
+      const isVisible = header.classList.contains('header-visible') || !header.classList.contains('header-hidden');
+      
+      if (isVisible) {
+        // Header is visible - apply margin based on header height
+        hero.style.marginTop = headerHeight + 'px';
+      } else {
+        // Header is hidden - keep margin to prevent content jump
+        hero.style.marginTop = headerHeight + 'px';
+      }
+      
+      // Debug info
+      console.log(`Header height: ${headerHeight}px, Visible: ${isVisible}`);
+    }
+
+    // Track animation state
+    header.addEventListener('transitionstart', () => {
+      isAnimating = true;
+    });
+    
+    header.addEventListener('transitionend', () => {
+      isAnimating = false;
+      // Update offset after animation completes
+      setTimeout(updateOffset, 50);
+    });
+
+    // Initial adjustment
+    updateOffset();
+
+    // Update on window resize only
+    window.addEventListener('resize', () => {
+      if (!isAnimating) {
+        updateOffset();
+      }
+    });
+
+    console.log('Smart header offset initialized - no shaking');
+  }
+  function initHeaderScroll() {
+    const header = document.querySelector('header');
+    if (!header) {
+      console.log('Header not found');
+      return;
+    }
+
+    let lastScrollY = 0;
+    let ticking = false;
+
+    function updateHeader() {
+      const scrollY = window.scrollY;
+      
+      // Immediate response - no threshold needed
+      if (scrollY > lastScrollY && scrollY > 10) {
+        // Scrolling down - hide header immediately
+        header.classList.add('header-hidden');
+        header.classList.remove('header-visible');
+      } else if (scrollY < lastScrollY) {
+        // Scrolling up - show header immediately
+        header.classList.remove('header-hidden');
+        header.classList.add('header-visible');
+      }
+
+      lastScrollY = scrollY;
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }
+
+    // Initialize
+    header.classList.add('header-visible');
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    console.log('Header scroll functionality initialized');
+  }
   document.addEventListener('DOMContentLoaded', () => {
     setYear();
     initBrandsSlider();
     initAreasMapLazy();
     hookZipChecker();
-    hookForm('bookForm',  'bookMsg');   // Book a technician (hero)
+    // Hero booking now loads through the Housecall Pro embed.
     hookForm('quoteForm', 'quoteMsg');  // Request a quote (contact)
+    initHeaderScroll(); // Initialize header hide/show functionality
+    adjustForHeader(); // Initialize smart header offset
+    
+    // Debug: Test header scroll functionality
+    console.log('Header scroll initialized');
 
     // Smooth-scroll internal nav links so sections land in the vertical center
     // This intercepts clicks on anchors that link to IDs on the page and
@@ -284,20 +383,18 @@
       const hero = document.querySelector('.hero');
       const video = document.querySelector('.hero-video');
       const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-      const saveData = connection && (connection.saveData || connection.effectiveType === '2g');
-      const isMobile = matchMedia('(max-width: 640px)').matches;
 
-      if (video && !prefersReducedMotion && !saveData && !isMobile) {
-        // Load the video source only when conditions are good
+      if (video && !prefersReducedMotion) {
+        // Always load and play the video (removed conditions)
         const source = document.createElement('source');
-        source.src = 'assets/video/hero.mp4';
+        source.src = 'https://dtappliances.com/assets/video/hero.mp4';
         source.type = 'video/mp4';
         video.appendChild(source);
         // Start playback; ignore any promise rejection
         video.play().catch(() => {});
-      } else if (video) {
-        // Keep poster image only
+        console.log('Hero video initialized');
+      } else if (video && prefersReducedMotion) {
+        // Keep poster image only for reduced motion users
         video.parentElement && video.parentElement.removeChild(video);
       }
 
